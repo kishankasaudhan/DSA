@@ -1,33 +1,22 @@
-
 class Solution {
     public int minInsertions(String s) {
-        int open = 0;
+        int need = 0;
         int insertions = 0;
-
-        for (int i = 0; i < s.length(); i++) {
-
-            if (s.charAt(i) == '(') {
-                open++;
-            } else {
-                // If another ')' is not available, insert one
-                if (i + 1 < s.length() && s.charAt(i + 1) == ')') {
-                    i++; // Consume the second ')'
-                } else {
-                    insertions++; // Insert the missing ')'
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i) == '('){
+                need += 2;
+                if(need % 2 == 1){
+                    insertions++;
+                    need--;
                 }
-
-                // This '))' must match an opening '('
-                if (open > 0) {
-                    open--;
-                } else {
-                    insertions++; // Insert a missing '('
+            }else{
+                need--;
+                if(need < 0){
+                    insertions++;
+                    need = 1;
                 }
             }
         }
-
-        // Each unmatched '(' needs two ')'
-        insertions += open * 2;
-
-        return insertions;
+        return need + insertions;
     }
 }
