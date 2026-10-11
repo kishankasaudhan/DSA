@@ -17,7 +17,9 @@ class Solution {
         int maxScore = Integer.MIN_VALUE;
         for(int i=0;i<=k;i++){
             int score = leftScore[i] + rightScore[k-i];
-            maxScore = Math.max(maxScore,score);
+            if(score > maxScore){
+                maxScore = score;
+            }
         }
         return maxScore;
     }
