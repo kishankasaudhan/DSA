@@ -1,6 +1,5 @@
 class Solution {
     public int maxSubArray(int[] nums) {
-        //kadane's algo
         int n = nums.length;
         int sum = 0;
         int maxSum = Integer.MIN_VALUE;
