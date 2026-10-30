@@ -8,7 +8,7 @@ class Solution {
         for(int pile : piles){
             high = Math.max(high,pile);
         }
-        int ans = high;
+        int ans = low;
         //binary search
         while(low <= high){
             long hours = 0;
